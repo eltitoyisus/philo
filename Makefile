@@ -14,12 +14,13 @@ CC = cc
 FLAGS = -Werror -Wall -Wextra -pthread
 NAME = philo
 RM = rm -rf
-SRC_DIR = /src/
+SRC_DIR = src/
 
 SRC = $(SRC_DIR)philo.c		\
 		$(SRC_DIR)base.c	\
 		$(SRC_DIR)adv.c		\
-		$(SRC_DIR)utils.c
+		$(SRC_DIR)utils.c	\
+		$(SRC_DIR)routine.c
 
 OBJ = $(SRC:.c=.o)
 
