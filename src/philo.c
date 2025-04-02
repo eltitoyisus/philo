@@ -14,12 +14,12 @@
 
 int main(int argc, char **argv)
 {
-	if (argc == 5)
-		base_philo();
+	if (argc == 5) 
+		base_philo(ft_atol(argv[1]), ft_atol(argv[2]), ft_atol(argv[3]), ft_atol(argv[4]));
 	else if (argc == 6)
 		adv_philo();
 	else
-		write(1, "Usage: ./philo 'pn' 'ttd' 'tte' 'tts' 'nmu' ")
+		write(1, "Usage: ./philo 'pn' 'ttd' 'tte' 'tts' 'nmu' ", 45);
 }
 
 

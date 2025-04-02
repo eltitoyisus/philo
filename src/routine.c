@@ -22,12 +22,44 @@ void eat()
 
 }
 
-void take_fork()
+void take_fork(t_table *table, char **argv)
 {
-	
+	if (table->num_philos % 2 == 0)
+	{
+		pthread_mutex_lock(&table->forks[table->id]);
+		pthread_mutex_lock(&table->forks[(table->id + 1) % table->num_philos]);
+	}
+	else
+	{
+		pthread_mutex_lock(&table->forks[(table->id + 1) % table->num_philos]);
+		pthread_mutex_lock(&table->forks[table->id]);
+	}
 }
 
-void die()
+void die(t_table *table, char **argv)
 {
-	
+	if (table->time_to_die >= ft_atol(argv[2])
+		|| table->time_to_eat >= ft_atol(argv[3])
+		|| table->time_to_sleep >= ft_atol(argv[4]))
+	{
+		break ;
+		printf("%zu has died", philo->id);
+		free(table->time_to_die);
+		free(table->time_to_eat);
+		free(table->time_to_sleep);
+	}
 }
+
+
+/*
+	if (table->num_philos % 2 == 0)
+	{
+		pthread_mutex_lock(&table->forks[table->id]);
+		pthread_mutex_lock(&table->forks[(table->id + 1) % table->num_philos]);
+	}
+	else
+	{
+		pthread_mutex_lock(&table->forks[(table->id + 1) % table->num_philos]);
+		pthread_mutex_lock(&table->forks[table->id]);
+	}
+*/

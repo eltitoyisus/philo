@@ -12,7 +12,7 @@
 
 #include "../includes/philo.h"
 
-int ft_atol(char *str)
+long ft_atol(char *str)
 {
 	long n = 0;
 	int sign = 1;
@@ -22,7 +22,7 @@ int ft_atol(char *str)
 	{
 		if (str[0] == '-')
 			sign = -1;
-		i++:
+		i++;
 	}
 
 	while (str[i] >= '0' && str[i] <= '9')
