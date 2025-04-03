@@ -12,4 +12,26 @@
 
 #include "../includes/philo.h"
 
-void 
+void create_thread(t_table *table)
+{
+	long i;
+
+	i = 0;
+	while (i < table->num_philos)
+	{
+		pthread_create(&table->philos[i].thread, NULL, &routine, &table->philos[i]);
+		i++;
+	}
+}
+
+void join_thread(t_table *table)
+{
+	long i;
+
+	i = 0;
+	while (i < table->num_philos)
+	{
+		pthread_join(table->philos[i].thread, NULL);
+		i++;
+	}
+}
