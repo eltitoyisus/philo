@@ -13,10 +13,9 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-#include "philo.h"
 #include "headers.h"
 
-typedef struct s_table;
+typedef struct s_table t_table;
 
 typedef struct s_philo
 {
@@ -26,10 +25,10 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
-	struct s_table	*table;
+	t_table			*table;
 }	t_philo;
 
-struct s_table
+typedef struct s_table
 {
 	long			num_philos;
 	long			time_to_die;

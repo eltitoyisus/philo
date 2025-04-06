@@ -28,21 +28,25 @@ int		ft_usleep(size_t m);
 void	valid_args(t_table *table, char **argv);
 
 // DO PHILO
-void	ft_init(long number_philo, long time_to_die, long time_to_eat, long time_to_sleep);
 void	do_routine(t_table *table);
 void	base_philo(long number_philo, long time_to_die, long time_to_eat, long time_to_sleep);
-void	adv_philo(void);
+void	adv_philo(int argc, char **argv);
 
 // DO MUTEX
 void	mutex_init(t_table *table);
 void	mutex_destroy(t_table *table);
 
-// ROUTINE
-void	ft_init(t_table *table);
-void	sleep();
-void	eat();
-void	think();
-void	take_fork(t_table *table, char **argv);
-void	die();
+// DO THREAD
+void	create_thread(t_table *table);
+void	join_thread(t_table *table);
 
+
+// ROUTINE
+void	*routine(void *arg);
+void	ft_init(t_table *table, long number_philo, long time_to_die, long time_to_eat, long time_to_sleep);
+void	philo_sleep(t_philo *philo);
+void	eat(t_philo *philo);
+void	think(t_philo *philo);
+void	take_fork(t_philo *philo);
+void	die(t_table *table);
 #endif
