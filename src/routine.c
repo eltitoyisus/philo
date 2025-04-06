@@ -12,69 +12,109 @@
 
 #include "../includes/philo.h"
 
-void	sleep()
+void	philo_sleep(t_philo *philo)
 {
-	t_table *table;
-	char **argv;
-
-	if (!take_fork(table, argv[4]) && table->time_to_sleep <= argv[4])
-		printf("%zu is sleeping", table->philos[table->id].id);
+	printf("%ld %ld is sleeping\n",
+		get_current_time() - philo->table->start_time, philo->id);
+	ft_usleep(philo->table->time_to_sleep);
 }
 
-void	eat()
+void	think(t_philo *philo)
 {
-	t_table *table;
-	char **argv;
-
-	if (take_fork(table, argv[3]) && table->time_to_eat <= argv[3])
-		printf("%zu is eating", table->philos[table->id].id);
+	printf("%ld %ld is thinking\n",
+		get_current_time() - philo->table->start_time, philo->id);
 }
 
-void	think()
+void	take_fork(t_philo *philo)
 {
-	t_table *table;
-	char **argv;
-
-	if (sleep() && eat() && !die())
-		ft_usleep(argv[2] - (argv[3] + argv[4]));
-	printf("%zu is thinking", table->philos[table->id].id);
-}
-
-void take_fork(t_table *table, char **argv)
-{
-	if (table->num_philos % 2 == 0)
+	if (philo->id % 2 == 0)
 	{
-		pthread_mutex_lock(&table->forks[table->id]);
-		pthread_mutex_lock(&table->forks[(table->id + 1) % table->num_philos]);
-		table->philos[table->id].last_eat_time = get_current_time();
-		table->philos[table->id].eat_count++;
-		printf("%zu has taken a fork", table->philos[table->id].id);
-		printf("%zu has taken a fork", table->philos[(table->id + 1) % table->num_philos].id);
+		pthread_mutex_lock(philo->fork_left);
+		printf("%ld %ld has taken a fork\n", 
+			get_current_time() - philo->table->start_time, philo->id);
+		pthread_mutex_lock(philo->fork_right);
+		printf("%ld %ld has taken a fork\n", 
+			get_current_time() - philo->table->start_time, philo->id);
 	}
 	else
 	{
-		pthread_mutex_lock(&table->forks[table->id]);
-		pthread_mutex_lock(&table->forks[(table->id - 1) % table->num_philos]);
-		table->philos[table->id].last_eat_time = get_current_time();
-		table->philos[table->id].eat_count++;
-		printf("%zu has taken a fork", table->philos[table->id].id);
-		printf("%zu has taken a fork", table->philos[(table->id - 1) % table->num_philos].id);
+		pthread_mutex_lock(philo->fork_right);
+		printf("%ld %ld has taken a fork\n", 
+			get_current_time() - philo->table->start_time, philo->id);
+		pthread_mutex_lock(philo->fork_left);
+		printf("%ld %ld has taken a fork\n", 
+			get_current_time() - philo->table->start_time, philo->id);
 	}
 }
 
-void die()
+void	eat(t_philo *philo)
 {
-	t_table *table;
-	char **argv;
+	take_fork(philo);
 
-	if (table->time_to_die >= ft_atol(argv[2])
-		|| table->time_to_eat >= ft_atol(argv[3])
-		|| table->time_to_sleep >= ft_atol(argv[4]))
+	philo->last_eat_time = get_current_time();
+	philo->eat_count++;
+
+	printf("%ld %ld is eating\n",
+		get_current_time() - philo->table->start_time, philo->id);
+	ft_usleep(philo->table->time_to_eat);
+
+	pthread_mutex_unlock(philo->fork_left);
+	pthread_mutex_unlock(philo->fork_right);
+}
+
+int	check_death(t_philo *philo)
+{
+	size_t	current_time;
+
+	current_time = get_current_time();
+	if (current_time - philo->last_eat_time > (size_t)philo->table->time_to_die)
 	{
-		break ;
-		printf("%zu has died", table->philos[table->id].id);
-		free(table->time_to_die);
-		free(table->time_to_eat);
-		free(table->time_to_sleep);
+		printf("%ld %ld died\n",
+			current_time - philo->table->start_time, philo->id);
+		return (1);
+	}
+	return (0);
+}
+
+void	*routine(void *arg)
+{
+	t_philo	*philo;
+	
+	philo = (t_philo *)arg;
+	if (philo->id % 2 == 0)
+		ft_usleep(philo->table->time_to_eat / 2);
+		
+	while (1)
+	{
+		if (check_death(philo))
+			break;
+		eat(philo);
+		philo_sleep(philo);
+		think(philo);
+	}
+	return (NULL);
+}
+
+void	die(t_table *table)
+{
+	long	i;
+	size_t	current_time;
+
+	while (1)
+	{
+		i = 0;
+		while (i < table->num_philos)
+		{
+			current_time = get_current_time();
+			if (current_time - table->philos[i].last_eat_time > 
+				(size_t)table->time_to_die)
+			{
+				printf("%ld %ld died\n", 
+					current_time - table->start_time, table->philos[i].id);
+				return;
+			}
+			i++;
+		}
+		ft_usleep(1000);
 	}
 }
