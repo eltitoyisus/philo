@@ -16,11 +16,17 @@ NAME = philo
 RM = rm -rf
 SRC_DIR = src/
 
-SRC = $(SRC_DIR)philo.c		\
-		$(SRC_DIR)base.c	\
-		$(SRC_DIR)adv.c		\
-		$(SRC_DIR)utils.c	\
-		$(SRC_DIR)routine.c
+SRC = $(SRC_DIR)philo.c				\
+		$(SRC_DIR)base.c			\
+		$(SRC_DIR)adv.c				\
+		$(SRC_DIR)utils.c			\
+		$(SRC_DIR)routine.c			\
+		$(SRC_DIR)do_mutex.c		\
+		$(SRC_DIR)do_thread.c		\
+		$(SRC_DIR)init_routine.c	\
+		$(SRC_DIR)parse.c			\
+		$(SRC_DIR)prevent.c			\
+		$(SRC_DIR)free_philo.c
 
 OBJ = $(SRC:.c=.o)
 
