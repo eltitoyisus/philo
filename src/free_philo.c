@@ -14,10 +14,7 @@
 
 void	free_philo(t_table *table)
 {
-	int i = 0;
-	while (i < table->num_philos)
-	{
-		free(table->num_philos[i]);
-		i++;
-	}
+	free(table->philos);
+	free(table->forks);
+	free(table);
 }

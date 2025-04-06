@@ -12,17 +12,17 @@
 
 #include "../includes/philo.h"
 
-void adv_philo(void)
+void adv_philo(int argc, char **argv)
 {
-	t_table	*table;
-	char **argv;
 	int i = 0;
-	int n = ft_atol(argv[5]);
-	if (argv == 5)
+	
+	if (argc == 6)
 	{
-		while (i <= n)
+		int n = ft_atol(argv[5]);
+		while (i < n)
 		{
-			base_philo(argv[1], argv[2], argv[3], argv[4]);
+			base_philo(ft_atol(argv[1]), ft_atol(argv[2]),
+						ft_atol(argv[3]), ft_atol(argv[4]));
 			i++;
 		}
 	}
