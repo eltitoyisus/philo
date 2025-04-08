@@ -13,18 +13,16 @@
 #include "../includes/philo.h"
 #include "../includes/struct.h"
 
-void valid_args(t_table *table, char **argv)
+void	valid_args(t_table *table, char **argv)
 {
 	table->num_philos = ft_atol(argv[1]);
 	table->time_to_eat = ft_atol(argv[2]);
 	table->time_to_eat = ft_atol(argv[3]);
 	table->time_to_sleep = ft_atol(argv[4]);
-
 	if (table->num_philos > 100)
 		printf("cant use more than 100 philosophers");
 	if (table->time_to_die < 200
 		|| table->time_to_eat < 200
 		|| table->time_to_sleep < 200)
-			printf("Use bigger time stamps");
+		printf("Use bigger time stamps");
 }
-

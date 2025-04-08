@@ -19,8 +19,8 @@ void	*malloc_prevent(size_t bytes)
 	res = malloc(bytes);
 	if (!res)
 	{
-		return NULL;
+		return (NULL);
 		free(res);
 	}
-	return res;
+	return (res);
 }

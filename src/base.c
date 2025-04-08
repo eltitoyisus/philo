@@ -12,11 +12,20 @@
 
 #include "../includes/philo.h"
 
-void base_philo(long number_philo, long time_to_die, long time_to_eat, long time_to_sleep)
+void	base_philo(long number_philo, long time_to_die,
+	long time_to_eat, long time_to_sleep)
 {
-	t_table	*table;
+	t_table			*table;
+	t_philo_args	args;
 
 	table = malloc_prevent(sizeof(t_table));
-	ft_init(table, number_philo, time_to_die, time_to_eat, time_to_sleep);
+	if (!table)
+		return ;
+	args.number_philo = number_philo;
+	args.time_to_die = time_to_die;
+	args.time_to_eat = time_to_eat;
+	args.time_to_sleep = time_to_sleep;
+	args.repeat = -1;
+	ft_init(table, args);
 	do_routine(table);
 }

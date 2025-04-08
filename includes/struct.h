@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
-#include "headers.h"
+# include "headers.h"
 
-typedef struct s_table t_table;
+typedef struct s_table	t_table;
 
 typedef struct s_philo
 {
@@ -39,5 +39,14 @@ typedef struct s_table
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }	t_table;
+
+typedef struct s_philo_args
+{
+	long	number_philo;
+	long	time_to_die;
+	long	time_to_eat;
+	long	time_to_sleep;
+	long	repeat;
+}	t_philo_args;
 
 #endif

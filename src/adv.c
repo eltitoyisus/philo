@@ -12,18 +12,35 @@
 
 #include "../includes/philo.h"
 
-void adv_philo(int argc, char **argv)
+void	*routine(void *arg)
 {
-	int i = 0;
-	
-	if (argc == 6)
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	if (philo->id % 2 == 0)
+		ft_usleep(philo->table->time_to_eat / 2);
+	while (1)
 	{
-		int n = ft_atol(argv[5]);
-		while (i < n)
-		{
-			base_philo(ft_atol(argv[1]), ft_atol(argv[2]),
-						ft_atol(argv[3]), ft_atol(argv[4]));
-			i++;
-		}
+		if (check_death(philo))
+			break ;
+		eat(philo);
+		if (philo->table->num_eats > 0 && philo->eat_count
+			>= philo->table->num_eats)
+			break ;
+		philo_sleep(philo);
+		think(philo);
 	}
+	return (NULL);
+}
+
+void	adv_philo(t_philo_args args)
+{
+	t_table	*table;
+
+	table = malloc_prevent(sizeof(t_table));
+	if (!table)
+		return ;
+	ft_init(table, args);
+	table->num_eats = args.repeat;
+	do_routine(table);
 }

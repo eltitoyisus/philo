@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #ifndef HEADERS_H
-#define HEADERS_H
+# define HEADERS_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/time.h>
-#include <pthread.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/time.h>
+# include <pthread.h>
 
 #endif

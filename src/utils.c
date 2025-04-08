@@ -12,19 +12,21 @@
 
 #include "../includes/philo.h"
 
-long ft_atol(char *str)
+long	ft_atol(char *str)
 {
-	long n = 0;
-	int sign = 1;
-	int i = 0;
+	long	n;
+	int		sign;
+	int		i;
 
+	n = 0;
+	i = 0;
+	sign = 1;
 	if (str[0] == '-' || str[0] == '+')
 	{
 		if (str[0] == '-')
 			sign = -1;
 		i++;
 	}
-
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		n = n * 10;

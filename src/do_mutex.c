@@ -12,9 +12,10 @@
 
 #include "../includes/philo.h"
 
-void mutex_init(t_table *table)
+void	mutex_init(t_table *table)
 {
 	long	i;
+
 	i = 0;
 	while (i < table->num_philos)
 	{
@@ -23,14 +24,15 @@ void mutex_init(t_table *table)
 	}
 }
 
-void mutex_destroy(t_table *table)
+void	mutex_destroy(t_table *table)
 {
-	long i;
+	long	i;
+
 	i = 0;
 	while (i < table->num_philos)
 	{
 		pthread_mutex_destroy(&table->forks[i]);
 		i++;
 	}
-	free(table);
+	free_philo(table);
 }

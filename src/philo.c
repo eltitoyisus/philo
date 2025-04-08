@@ -12,29 +12,24 @@
 
 #include "../includes/philo.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	if (argc == 5) 
-		base_philo(ft_atol(argv[1]), ft_atol(argv[2]), ft_atol(argv[3]), ft_atol(argv[4]));
+	t_philo_args	args;
+
+	if (argc == 5)
+	{
+		base_philo(ft_atol(argv[1]), ft_atol(argv[2]),
+			ft_atol(argv[3]), ft_atol(argv[4]));
+	}
 	else if (argc == 6)
-		adv_philo(argc, argv);
+	{
+		args.number_philo = ft_atol(argv[1]);
+		args.time_to_die = ft_atol(argv[2]);
+		args.time_to_eat = ft_atol(argv[3]);
+		args.time_to_sleep = ft_atol(argv[4]);
+		args.repeat = ft_atol(argv[5]);
+		adv_philo(args);
+	}
 	else
 		write(1, "Usage: ./philo 'pn' 'ttd' 'tte' 'tts' 'nmu' ", 45);
 }
-
-
-
-
-/*
-
-number of philo
-
-time to die
-
-time to eat
-
-time to sleep
-
-number of must eat
-
-*/

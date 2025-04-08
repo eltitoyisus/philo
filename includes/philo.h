@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #ifndef PHILO_H
-#define PHILO_H
+# define PHILO_H
 
-#include "headers.h"
-#include "struct.h"
+# include "headers.h"
+# include "struct.h"
 
 // UTILS
 long	ft_atol(char *str);
@@ -29,24 +29,26 @@ void	valid_args(t_table *table, char **argv);
 
 // DO PHILO
 void	do_routine(t_table *table);
-void	base_philo(long number_philo, long time_to_die, long time_to_eat, long time_to_sleep);
-void	adv_philo(int argc, char **argv);
+void	base_philo(long number_philo, long time_to_die,
+			long time_to_eat, long time_to_sleep);
+void	adv_philo(t_philo_args args);
 
 // DO MUTEX
 void	mutex_init(t_table *table);
 void	mutex_destroy(t_table *table);
+void	free_philo(t_table *table);
 
 // DO THREAD
 void	create_thread(t_table *table);
 void	join_thread(t_table *table);
 
-
 // ROUTINE
 void	*routine(void *arg);
-void	ft_init(t_table *table, long number_philo, long time_to_die, long time_to_eat, long time_to_sleep);
+void	ft_init(t_table *table, t_philo_args args);
 void	philo_sleep(t_philo *philo);
 void	eat(t_philo *philo);
 void	think(t_philo *philo);
 void	take_fork(t_philo *philo);
-void	die(t_table *table);
+int		check_death(t_philo *philo);
+
 #endif
