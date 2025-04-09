@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:32:01 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/03/31 09:32:01 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:19:26 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int	main(int argc, char **argv)
 		adv_philo(args);
 	}
 	else
-		write(1, "Usage: ./philo 'pn' 'ttd' 'tte' 'tts' 'nmu' ", 45);
+		printf("Usage: ./philo 'pn' 'ttd' 'tte' 'tts' 'men' ");
 }

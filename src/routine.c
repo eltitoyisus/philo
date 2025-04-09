@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:59:15 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/03/31 09:59:15 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:17:51 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	check_death(t_philo *philo)
 	if (current_time - philo->last_eat_time
 		> (size_t)philo->table->time_to_die)
 	{
-		ft_usleep(500);
+		ft_usleep(1);
 		printf("%ld %ld died\n",
 			current_time - philo->table->start_time, philo->id);
 		exit(0);
