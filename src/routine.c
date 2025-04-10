@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:59:15 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/09 10:47:21 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:41:49 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,4 @@ void	eat(t_philo *philo)
 	ft_usleep(philo->table->time_to_eat);
 	pthread_mutex_unlock(philo->fork_left);
 	pthread_mutex_unlock(philo->fork_right);
-}
-
-int	check_death(t_philo *philo)
-{
-	size_t	current_time;
-
-	current_time = get_current_time();
-	if (current_time - philo->last_eat_time
-		> (size_t)philo->table->time_to_die)
-	{
-		ft_usleep(1);
-		printf("%ld %ld died\n",
-			current_time - philo->table->start_time, philo->id);
-		exit(0);
-		return (1);
-	}
-	return (0);
 }
