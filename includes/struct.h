@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 09:14:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/02 09:14:45 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:47:01 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
+	long			is_dead;
 	t_table			*table;
 }	t_philo;
 

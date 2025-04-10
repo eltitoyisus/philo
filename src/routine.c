@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:59:15 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/09 09:17:51 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/09 10:47:21 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	think(t_philo *philo)
 }
 
 void	take_fork(t_philo *philo)
-{
+{	
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->fork_left);
