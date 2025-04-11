@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:48:21 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/10 13:19:31 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 08:05:53 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	join_thread(t_table *table);
 
 // ROUTINE
 void	*routine(void *arg);
+void	x_routine(t_philo *philo);
+void	*monitor_routine(void *arg);
+void	is_even(t_philo *philo);
+void	is_odd(t_philo *philo);
 void	ft_init(t_table *table, t_philo_args args);
 int		one_philo(t_philo *philo);
 int		die(t_philo *philo);
@@ -51,6 +55,9 @@ void	philo_sleep(t_philo *philo);
 void	eat(t_philo *philo);
 void	think(t_philo *philo);
 void	take_fork(t_philo *philo);
-int		check_death(t_philo *philo);
+
+void	handle_philo_death(t_table *table, int i, size_t current_time);
+int	check_philo_state(t_table *table, int i, int *all_ate_enough);
+int	monitor_philos(t_table *table);
 
 #endif

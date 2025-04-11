@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 09:14:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/10 12:47:01 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 07:49:37 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_table
 	long			num_eats;
 	size_t			start_time;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	death_mutex;
+	long			someone_die;
 	t_philo			*philos;
 }	t_table;
 
