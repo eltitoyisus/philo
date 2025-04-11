@@ -6,15 +6,15 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:54:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 07:59:53 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 08:21:05 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void *routine(void *arg)
+void	*routine(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
@@ -25,26 +25,26 @@ void *routine(void *arg)
 		if (philo->table->someone_die)
 		{
 			pthread_mutex_unlock(&philo->table->death_mutex);
-			break;
+			break ;
 		}
 		pthread_mutex_unlock(&philo->table->death_mutex);
 		if (one_philo(philo))
-			break;
+			break ;
 		if (die(philo))
-			break;
+			break ;
 		x_routine(philo);
 	}
 	return (NULL);
 }
 
-void x_routine(t_philo *philo)
+void	x_routine(t_philo *philo)
 {
 	eat(philo);
 	philo_sleep(philo);
 	think(philo);
 }
 
-int die(t_philo *philo)
+int	die(t_philo *philo)
 {
 	size_t	current_time;
 
@@ -53,7 +53,7 @@ int die(t_philo *philo)
 	if (philo->table->someone_die)
 	{
 		pthread_mutex_unlock(&philo->table->death_mutex);
-		return 1;
+		return (1);
 	}
 	if (current_time - philo->last_eat_time
 		> (size_t)philo->table->time_to_die)
@@ -63,10 +63,10 @@ int die(t_philo *philo)
 		philo->is_dead = 1;
 		philo->table->someone_die = 1;
 		pthread_mutex_unlock(&philo->table->death_mutex);
-		return 1;
+		return (1);
 	}
 	pthread_mutex_unlock(&philo->table->death_mutex);
-	return 0;
+	return (0);
 }
 
 int	one_philo(t_philo *philo)
@@ -85,18 +85,18 @@ int	one_philo(t_philo *philo)
 		philo->is_dead = 1;
 		philo->table->someone_die = 1;
 		pthread_mutex_unlock(&philo->table->death_mutex);
-		return 1;
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
-void adv_philo(t_philo_args args)
+void	adv_philo(t_philo_args args)
 {
-	t_table *table;
+	t_table	*table;
 
 	table = malloc_prevent(sizeof(t_table));
 	if (!table)
-		return;
+		return ;
 	table->num_eats = args.repeat;
 	table->someone_die = 0;
 	pthread_mutex_init(&table->death_mutex, NULL);

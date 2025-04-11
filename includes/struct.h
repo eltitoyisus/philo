@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 09:14:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 07:49:37 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 08:19:32 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ typedef struct s_table
 
 typedef struct s_philo_args
 {
-	long	number_philo;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	long	repeat;
+	long		number_philo;
+	long		time_to_die;
+	long		time_to_eat;
+	long		time_to_sleep;
+	long		repeat;
 }	t_philo_args;
 
 #endif

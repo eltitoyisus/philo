@@ -6,15 +6,15 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:52:27 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 08:06:55 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 08:16:51 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void ft_init(t_table *table, t_philo_args args)
+void	ft_init(t_table *table, t_philo_args args)
 {
-	long i;
+	long	i;
 
 	table->num_philos = args.number_philo;
 	table->time_to_die = args.time_to_die;
@@ -40,10 +40,10 @@ void ft_init(t_table *table, t_philo_args args)
 	}
 }
 
-void do_routine(t_table *table)
+void	do_routine(t_table *table)
 {
-	pthread_t monitor;
-	
+	pthread_t	monitor;
+
 	mutex_init(table);
 	pthread_create(&monitor, NULL, &monitor_routine, table);
 	create_thread(table);
