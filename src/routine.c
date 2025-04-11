@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:59:15 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 08:15:59 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:58:29 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	think(t_philo *philo)
 
 void	take_fork(t_philo *philo)
 {
+	if (die(philo))
+		return ;
 	if (philo->id % 2 == 0)
 		is_even(philo);
 	else

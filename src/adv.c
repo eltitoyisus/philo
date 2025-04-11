@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:54:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 08:21:05 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:37:45 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ int	die(t_philo *philo)
 		pthread_mutex_unlock(&philo->table->death_mutex);
 		return (1);
 	}
-	if (current_time - philo->last_eat_time
-		> (size_t)philo->table->time_to_die)
+	if (current_time - philo->last_eat_time > (size_t)philo->table->time_to_die)
 	{
 		printf("%ld %ld died\n",
 			current_time - philo->table->start_time, philo->id);
