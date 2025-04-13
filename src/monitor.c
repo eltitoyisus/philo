@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 08:05:08 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 08:18:14 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:14:58 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	*monitor_routine(void *arg)
 	{
 		if (monitor_philos(table))
 			return (NULL);
-		ft_usleep(1);
+		ft_usleep(10);
 	}
 	return (NULL);
 }

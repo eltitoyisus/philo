@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:59:15 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 20:58:29 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:24:30 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	philo_sleep(t_philo *philo)
 
 void	think(t_philo *philo)
 {
+	long	think_time;
+
 	pthread_mutex_lock(&philo->table->death_mutex);
 	if (philo->table->someone_die)
 	{
@@ -37,6 +39,13 @@ void	think(t_philo *philo)
 	printf("%ld %ld is thinking\n",
 		get_current_time() - philo->table->start_time, philo->id);
 	pthread_mutex_unlock(&philo->table->death_mutex);
+	if (philo->table->num_philos % 2 == 0)
+		think_time = 1;
+	else
+		think_time = (philo->table->time_to_eat * 2
+				- philo->table->time_to_sleep) / 2;
+	if (think_time > 0)
+		ft_usleep(think_time);
 }
 
 void	take_fork(t_philo *philo)

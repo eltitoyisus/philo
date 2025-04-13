@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 10:46:44 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 21:22:46 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:23:31 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int	ft_usleep(size_t m)
 
 	start = get_current_time();
 	while ((get_current_time() - start) < m)
-		usleep(1);
+		usleep(500);
 	return (0);
 }
