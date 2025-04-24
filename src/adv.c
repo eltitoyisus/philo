@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:54:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 20:37:45 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:05:58 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,14 @@ void	adv_philo(t_philo_args args)
 	table = malloc_prevent(sizeof(t_table));
 	if (!table)
 		return ;
+	if (args.number_philo <= 0 || args.time_to_die <= 0
+		|| args.time_to_eat <= 0 || args.time_to_sleep <= 0
+		|| args.repeat <= 0)
+	{
+		printf("Invalid input: all arguments must be positive numbers\n");
+		free(table);
+		exit(1);
+	}
 	table->num_eats = args.repeat;
 	table->someone_die = 0;
 	pthread_mutex_init(&table->death_mutex, NULL);

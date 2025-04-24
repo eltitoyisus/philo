@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:32:01 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/11 07:36:06 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:09:52 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ int	main(int argc, char **argv)
 		adv_philo(args);
 	}
 	else
-		printf("Usage: ./philo 'pn' 'ttd' 'tte' 'tts' 'men'");
+	{
+		printf("Usage: ./philo <philos> <time to die> <time to eat> ");
+		printf("<time to sleep> <optional: repeat number of meals>\n");
+	}
 }

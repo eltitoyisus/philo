@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 10:46:44 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/13 10:23:31 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/24 09:06:47 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,23 @@
 long	ft_atol(char *str)
 {
 	long	n;
-	int		sign;
 	int		i;
 
 	n = 0;
 	i = 0;
-	sign = 1;
-	if (str[0] == '-' || str[0] == '+')
-	{
-		if (str[0] == '-')
-			sign = -1;
+	if (str[i] == '-')
+		return (-1);
+	if (str[i] == '+')
 		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
+	if (!str[i])
+		return (-1);
+	while (str[i])
 	{
-		n = n * 10;
-		n = n + str[i++] - '0';
+		if (str[i] < '0' || str[i] > '9')
+			return (-1);
+		n = n * 10 + (str[i++] - '0');
 	}
-	return (n * sign);
+	return (n);
 }
 
 // TIME FUNCS
