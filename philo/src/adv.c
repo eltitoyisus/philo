@@ -6,7 +6,7 @@
 /*   By: jramos-a <jramos-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:54:45 by jramos-a          #+#    #+#             */
-/*   Updated: 2025/04/24 09:05:58 by jramos-a         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:11:26 by jramos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	adv_philo(t_philo_args args)
 	}
 	table->num_eats = args.repeat;
 	table->someone_die = 0;
-	pthread_mutex_init(&table->death_mutex, NULL);
 	ft_init(table, args);
 	do_routine(table);
 }
