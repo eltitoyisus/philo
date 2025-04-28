@@ -79,8 +79,6 @@ int	one_philo(t_philo *philo)
 			get_current_time() - philo->table->start_time, philo->id);
 		ft_usleep(philo->table->time_to_die);
 		pthread_mutex_lock(&philo->table->death_mutex);
-		printf("%ld %ld died\n",
-			current_time - philo->table->start_time, philo->id);
 		philo->is_dead = 1;
 		philo->table->someone_die = 1;
 		pthread_mutex_unlock(&philo->table->death_mutex);
